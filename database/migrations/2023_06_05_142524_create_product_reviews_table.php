@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
+            $table->string('description',1000);
+            $table->string('email',1000);
+            $table->unsignedBigInteger('product_id',100);
+            $table->foreign('email')->references('email')->on('profiles')
+            ->restrictOnDelete()
+            ->restrictOnUpdate();
+
+            $table->foreign('product_id')->references('id')->on('products')
+            ->restrictOnDelete()
+            ->restrictOnUpdate();
+
             $table->timestamps();
         });
     }
