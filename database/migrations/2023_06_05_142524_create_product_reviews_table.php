@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->string('description',1000);
-            $table->string('email',1000);
-            $table->unsignedBigInteger('product_id',100);
+            $table->string('email',50);
+            $table->unsignedBigInteger('product_id');
+
             $table->foreign('email')->references('email')->on('profiles')
             ->restrictOnDelete()
             ->restrictOnUpdate();
